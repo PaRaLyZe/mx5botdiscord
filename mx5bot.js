@@ -1,7 +1,7 @@
 var Discord = require("discord.js");
 var bot = new Discord.Client();
 
-//pingpong bot
+//PingPong bot
 bot.on("message", msg => {
     if (msg.content.startsWith("!ping")) {
         msg.channel.sendMessage("pong!");
