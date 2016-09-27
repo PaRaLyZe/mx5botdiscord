@@ -1,14 +1,16 @@
-//var https = require('https');
 var http = require('http');
 
 http.get({ host: 'testdrive.iracing.com', path: '/' }, (res) => {
-//https.get({ host: 'encrypted.google.com', path: '/' }, (res) => {
   console.log("statusCode: ", res.statusCode);
-  console.log("headers: ", res.headers);
+  //console.log("headers: ", res.headers);
 
+  var content = "";
   res.on('data', (d) => {
-    process.stdout.write(d);
-    console.log(`Received ${d.length} bytes of data.`);
+    content += d;
+  });
+
+  res.on('end', () => {
+    console.log("content-length: ", content.length);
   });
 
 }).on('error', (e) => {
